@@ -1,38 +1,24 @@
 const initialState = {
-  mangSV: [{ maSV: "1", hoTen: "Nguyễn Nam", sdt: "090909397989", email: "nguyennam@gmail.com" },
-  { maSV: "2", hoTen: "hoa", sdt: "090909397989", email: "nguyennam@gmail.com" },
-  { maSV: "3", hoTen: "nga", sdt: "090909397989", email: "nguyennam@gmail.com" }
+  mangSV: [{maSV: "sv1", hoTen: "Nguyễn Nam", sdt: "90909397989", email: "nguyennam@gmail.com"},
+  {maSV: "sv2", hoTen: "hoa", sdt: "090909397989", email: "hoa@gmail.com"},
+  {maSV: "sv3", hoTen: "nga", sdt: "090909397989", email: "nga@gmail.com"}
 ],
-  sinhVien: {
-    values: {
-      maSV: "",
-      hoTen: "",
-      sdt: "",
-      email: ""
-    },
-    errors: {
-      maSV: "",
-      hoTen: "",
-      sdt: "",
-      email: ""
-    }
-  },
+  chiTietSV:{maSV: "", hoTen: "", sdt: "", email: "" },
   mangSVTK:[]
 }
 
 export const DanhSachSinhVienReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "HANDLE_CHANGE":
-      state.sinhVien = action.sinhVien;
-      return { ...state }
 
     case "THEM_SINH_VIEN":
       state.mangSV = [...state.mangSV,action.sinhVien]
       return { ...state }
-    
+
     case "XEM_CHI_TIET":
-      state.sinhVien.values = action.svDetail
-      state.sinhVien = {...state.sinhVien}
+      document.getElementById("maSV").setAttribute("disabled", true) 
+      document.getElementById("btnUpdate").classList.remove("update") 
+      document.getElementById("btnAddSV").style.display = "none" 
+      state.chiTietSV = action.svDetail
       return {...state}
 
     case "XOA_SV":
@@ -45,6 +31,7 @@ export const DanhSachSinhVienReducer = (state = initialState, action) => {
         state.mangSV[svIndex] = action.svUpdate;
       }
       state.mangSV = [...state.mangSV]
+      state.chiTietSV = action.svUpdate;
       return {...state}
 
     case "TIM_KIEM":

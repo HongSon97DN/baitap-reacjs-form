@@ -33,8 +33,8 @@ class TableSinhVien extends Component {
         })
     }
 
+
     render() {
-        console.log(this.props)
         return (
             <div className='mt-3'>
                 <form onChange={(event) => {
@@ -69,7 +69,7 @@ class TableSinhVien extends Component {
 const mapStateToProps = (rootReducer) => {
     return {
         mangSV: rootReducer.DanhSachSinhVienReducer.mangSV,
-        mangSVSearch: rootReducer.DanhSachSinhVienReducer.mangSVTK
+        mangSVSearch: rootReducer.DanhSachSinhVienReducer.mangSVTK,
     }
 }
 
